@@ -3,12 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-author: John Doe
-language:
-timezone:
+title: 阅微随笔
+subtitle: 微言终日阅，涤荡心胸阔
+description: 学而不思则罔，思而不学则殆
+author: Lucius woo
+language: zh-CN
+timezone: Asia/Shanghai
+
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'

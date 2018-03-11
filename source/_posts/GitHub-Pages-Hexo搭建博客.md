@@ -7,8 +7,9 @@ tags: Hexo
 ## 1. Hexo
 ### 1.1 安装Hexo
 安装Hexo相当简单。在安装之前，必须检查电脑中是否已经安装下列应用程序：
-> * [Node.js](http://nodejs.org/)
-> * [Git](http://nodejs.org/)
+
+* [Node.js](http://nodejs.org/)
+* [Git](http://nodejs.org/)
 
 如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装
 

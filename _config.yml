@@ -79,5 +79,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/ukonwho/ukonwho.github.io.git
+  repo: ssh://git@github.com/ukonwho/ukonwho.github.io.git
   branch: master

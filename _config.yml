@@ -138,7 +138,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-skapp
+theme: skapp
 
 Plugins:
 - hexo-generator-cname

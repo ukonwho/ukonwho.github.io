@@ -38,7 +38,7 @@ avatar: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/qrcode_for_gh_
 default_cover: http://oo12ugek5.bkt.clouddn.com/images/default_cover.png
 
 # header 的背景图
-header_cover: http://oo12ugek5.bkt.clouddn.com/blog/images/banner-bg.jpg
+header_cover: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/194530quuhqbh5xu0b7zuk.jpg
 
 # 404 页面的背景图
 error_page_bg: http://oo12ugek5.bkt.clouddn.com/blog/images/dogs.jpg

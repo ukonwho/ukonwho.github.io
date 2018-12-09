@@ -35,13 +35,13 @@ avatar: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/qrcode_for_gh_
 # qrcode: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/qrcode_for_gh_643034dd3fff_258.jpg
 
 # 文章的默认封面
-default_cover: http://oo12ugek5.bkt.clouddn.com/images/default_cover.png
+default_cover: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/144555tabhxlb0qo5a8ki0.jpeg
 
 # header 的背景图
 header_cover: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/194530quuhqbh5xu0b7zuk.jpg
 
 # 404 页面的背景图
-error_page_bg: http://oo12ugek5.bkt.clouddn.com/blog/images/dogs.jpg
+error_page_bg: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/404.png
 
 # 页面加载loading图标
 loader_img: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/loading.gif

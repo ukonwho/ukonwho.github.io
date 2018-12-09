@@ -7,32 +7,32 @@ timezone: Asia/Shanghai
 
 # Site
 # 博客的标题
-title: 巴比龙科技工作室
+title: 巴比龙科技组
 
 # banner显示的子标题
-subtitle: 微言终日阅，涤荡心胸阔
+subtitle: 巴比龙科技组
 
 # banner显示的简短介绍
-subtitle_desc: 日常学习与兴趣交流
+subtitle_desc: 享受生命，享受自由
 
 # seo关键字
-keywords: minfive, minfive blog, 前端博客, 前端, 程序员, 前端开发, 全栈开发, node.js, javascript
+keywords: 巴比龙, AI, 信息技术, 科技组, 程序员, 前端开发, 全栈开发, Python, Java
 
 # 博客介绍（同时用于seo）
-description: 学而不思则罔，思而不学则殆
+description: 有一些鸟儿是注定不会被关在笼子里，它们的每一片羽毛都闪耀着自由的光辉。
 
 # 个人介绍
-introduction: 不思量，自难忘！
+introduction: Enjoy your freedom！
 
 # 博客的favicon图标，支持本地及在线两种方式，本地请将图标放置于 themes/hexo-theme-skapp/source/img 目录下
-favicon_ico: http://oo12ugek5.bkt.clouddn.com/blog/images/favicon.ico
+favicon_ico: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/favicon.ico
 
 # 博客的左上角logo图标，支持本地及在线两种方式
 logo: http://oo12ugek5.bkt.clouddn.com/images/logo-text-white.png
 
 # 头像/二维码（用于显示在底部）二选一
-avatar: http://oo12ugek5.bkt.clouddn.com/images/qrcode.png
-# qrcode: http://oo12ugek5.bkt.clouddn.com/images/qrcode.png
+avatar: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/qrcode_for_gh_643034dd3fff_258.jpg
+# qrcode: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/qrcode_for_gh_643034dd3fff_258.jpg
 
 # 文章的默认封面
 default_cover: http://oo12ugek5.bkt.clouddn.com/images/default_cover.png
@@ -44,18 +44,18 @@ header_cover: http://oo12ugek5.bkt.clouddn.com/blog/images/banner-bg.jpg
 error_page_bg: http://oo12ugek5.bkt.clouddn.com/blog/images/dogs.jpg
 
 # 页面加载loading图标
-loader_img: http://oo12ugek5.bkt.clouddn.com/blog/images/loader.gif
+loader_img: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/loading.gif
 
 # 站长信息
 author: Lucius Woo
-link: https://github.com/Mrminfive
+link: https://github.com/ukonwho
 
 # 用于页面 footer 的站长信息
 about:
-  info: 本站是基于 Hexo 搭建的静态资源博客，主要用于分享日常学习、生活及工作的一些心得总结，欢迎点击右下角订阅 rss。
-  address: Guangzhou, Guangdong Province, China
-  email: chenxiaowu1994@outlook.com
-
+  info: 巴比龙科技组，一个追求自由的科技工作组，这里有信息技术知识分享，有技术课程学习，欢迎点击右下角订阅 rss。
+  address: Shenzhen, Guangdong Province, China
+  email: luciuswoo@qq.com
+  
 # Busuanzi
 busuanzi: true
 

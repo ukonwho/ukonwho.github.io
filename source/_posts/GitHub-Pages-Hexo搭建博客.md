@@ -1,5 +1,10 @@
 ---
 title: GitHub Pages + Hexo搭建博客
+cover: https://papillon-1258009638.cos.ap-guangzhou.myqcloud.com/cover/GitHub%20Pages%20Hexo%20create%20blog.jpg
+author: 
+  nick: Lucius
+  link: https://www.github.com/ukonwho
+subtitle: Hexo 建立自己的博客
 date: 2018-03-11 09:42:39
 tags: Hexo
 ---

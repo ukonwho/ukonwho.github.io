@@ -149,3 +149,12 @@ deploy:
   type: git
   repo: https://github.com/ukonwho/ukonwho.github.io.git
   branch: master
+
+ # Gitalk
+gitTalk:
+  clientId: 4ac856ef7210e4943cf1
+  clientSecret: 10ec44e692c3351473643236dfbd643527d7a6ed
+  repo: ukonwho.github.io
+  owner: ukonwho
+  admin: 
+    - ukonwho

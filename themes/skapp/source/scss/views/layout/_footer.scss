@@ -37,6 +37,10 @@ body {
         @include link($main-color);
         color: #fff;
     }
+	
+	a:hover {
+		color: #62be93;
+	}
 }
 
 .footer__container {
@@ -80,6 +84,10 @@ body {
         & > a {
             @include link($main-color);
             color: #fff;
+        }
+		
+		& > a:hover {
+            color: #62be93;
         }
     }
 }

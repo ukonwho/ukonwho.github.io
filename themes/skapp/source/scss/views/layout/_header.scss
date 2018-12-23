@@ -143,6 +143,10 @@ body {
             @include link($main-color);
             color: #fff;
         }
+		
+		& > a:hover {
+			color: #62be93;
+		}
     }
 }
 

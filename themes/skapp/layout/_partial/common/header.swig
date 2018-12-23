@@ -23,7 +23,7 @@
         </div>
     </nav>
 
-    <section class="page__info">
+    <section class="page__info" style="display:none;">
         <h1 class="info__title">{{ get_setting('subtitle') }}</h1>
         <hr class="info__hr">
         <p class="info__desc">{{ get_setting('subtitle_desc') }}</p>

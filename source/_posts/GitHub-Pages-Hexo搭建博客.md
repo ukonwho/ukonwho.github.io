@@ -7,6 +7,7 @@ author:
 subtitle: Hexo 建立自己的博客
 date: 2018-03-11 09:42:39
 tags: Hexo
+categories: Hexo
 ---
 
 ## 1. Hexo

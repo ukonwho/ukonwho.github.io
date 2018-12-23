@@ -50,8 +50,8 @@
         <div class="page__container footer__container">
             <p class="footer__copyright">©
                 <a href="http://papillondev.com" target="_blank">All rights reserved</a> 2018 powered by
-                <a href="http://papillondev.com" target="_blank">巴比龙科技组</a>, 
-                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备18100000号-1</a>.
+                <a href="http://papillondev.com" target="_blank">巴比龙科技组</a>.
+                <!-- a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备18100000号-1</a>. -->
             </p>
             <ul class="footer__social-network clearfix">
                 {% if site.data.contact %}

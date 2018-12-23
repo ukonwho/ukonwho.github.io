@@ -57,7 +57,7 @@ about:
   email: luciuswoo@qq.com
   
 # Busuanzi
-busuanzi: true
+busuanzi: false
 
 # Feed Atom
 feed:

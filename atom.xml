@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ukonwho.github.io</id>
     <title>Gridea</title>
-    <updated>2020-05-22T06:21:32.262Z</updated>
+    <updated>2020-05-22T06:24:55.142Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ukonwho.github.io"/>
     <link rel="self" href="https://ukonwho.github.io/atom.xml"/>
@@ -12,10 +12,10 @@
     <rights>All rights reserved 2020, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[New beginning]]></title>
-        <id>https://ukonwho.github.io/post/hello-gridea/</id>
-        <link href="https://ukonwho.github.io/post/hello-gridea/">
+        <id>https://ukonwho.github.io/post/new-begining/</id>
+        <link href="https://ukonwho.github.io/post/new-begining/">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
+        <updated>2020-05-21T16:00:00.000Z</updated>
         <content type="html"><![CDATA[<p>😘 Enjoy~</p>
 ]]></content>
     </entry>

@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ukonwho.github.io</id>
     <title>Lucius‘ Blog</title>
-    <updated>2020-05-22T08:37:45.738Z</updated>
+    <updated>2020-05-22T08:42:41.152Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ukonwho.github.io"/>
     <link rel="self" href="https://ukonwho.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>奇怪的知识叕增加了</subtitle>
     <logo>https://ukonwho.github.io/images/avatar.png</logo>
     <icon>https://ukonwho.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Lucius‘ Blog</rights>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ukonwho.github.io</id>
     <title>Lucius‘ Blog</title>
-    <updated>2020-05-22T08:03:06.296Z</updated>
+    <updated>2020-05-22T08:37:45.738Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ukonwho.github.io"/>
     <link rel="self" href="https://ukonwho.github.io/atom.xml"/>
@@ -10,6 +10,24 @@
     <logo>https://ukonwho.github.io/images/avatar.png</logo>
     <icon>https://ukonwho.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Lucius‘ Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Bash 小技巧（一）]]></title>
+        <id>https://ukonwho.github.io/post/bash-xiao-ji-qiao/</id>
+        <link href="https://ukonwho.github.io/post/bash-xiao-ji-qiao/">
+        </link>
+        <updated>2020-05-22T08:26:01.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="1-bash读etcpasswd的小技巧bypass黑名单和防火墙">1. Bash读/etc/passwd的小技巧，Bypass黑名单和防火墙</h3>
+<figure data-type="image" tabindex="1"><img src="https://ukonwho.github.io/post-images/1590136039079.jpg" alt="" loading="lazy"></figure>
+<h3 id="2-搜索敏感文件的技巧">2. 搜索敏感文件的技巧</h3>
+<figure data-type="image" tabindex="2"><img src="https://ukonwho.github.io/post-images/1590136365958.jpg" alt="" loading="lazy"></figure>
+<h3 id="3-不能使用chmod的情况下尝试多种执行方法">3. 不能使用chmod的情况下尝试多种执行方法</h3>
+<figure data-type="image" tabindex="3"><img src="https://ukonwho.github.io/post-images/1590136426097.jpg" alt="" loading="lazy"></figure>
+<h3 id="4-无空格执行命令">4. 无空格执行命令</h3>
+<figure data-type="image" tabindex="4"><img src="https://ukonwho.github.io/post-images/1590136501429.jpg" alt="" loading="lazy"></figure>
+<h3 id="5-bash无文件扫描">5. Bash无文件扫描</h3>
+<figure data-type="image" tabindex="5"><img src="https://ukonwho.github.io/post-images/1590136572505.jpg" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[快速尝试多种反弹shell]]></title>
         <id>https://ukonwho.github.io/post/kuai-su-chang-shi-duo-chong-fan-dan-shell/</id>

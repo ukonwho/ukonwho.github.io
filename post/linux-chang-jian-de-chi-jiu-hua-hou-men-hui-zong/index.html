@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>New beginning | Lucius‘ Blog</title>
+<title>Linux常见的持久化后门汇总 | Lucius‘ Blog</title>
 <link rel="shortcut icon" href="https://ukonwho.github.io/favicon.ico?v=1591841280447">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://ukonwho.github.io/styles/main.css">
@@ -87,21 +87,50 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    New beginning
+                    Linux常见的持久化后门汇总
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-05-22 ·
+                        · 2020-06-11 ·
                     </time>
                     
                 </div>
                 <div class="post-content">
-                    <p>😘 Enjoy~</p>
+                    <h2 id="0x00前言">0x00:前言</h2>
+<p>持久化后门是指当入侵者通过某种手段拿到服务器的控制权之后,通过在服务器上放置一些后门(脚本、进程、连接之类),来方便他以后持久性的入侵,简单梳理一下日常遇见windows用的比较多的一些持久化方式方便以后排查问题使用.</p>
+<h2 id="centerlinuxcenter"><center>Linux</center></h2>
+<h2 id="0x01ssh">0x01:SSH</h2>
+<h3 id="一-ssh软连接">一、ssh软连接</h3>
+<center>SSH软连接后门的原理</center>
+<ol>
+<li>Linux软连接ssh后门需要ssh配置允许PAM认证才能使用</li>
+<li>将sshd文件软连接名称设置为su,这样应用在启动过程中他会去PAM配置文件夹中寻找是否存在对应名称的配置信息(su)</li>
+<li>如果被控主机不允许root登陆可用其他已存在用户登陆</li>
+<li>通过软连接的方式,实质上PAM认证是通过软连接的文件名(如:/tmp/su,/home/su)在/etc/pam.d/目录下寻找对应的PAM配置文件(如:/etc/pam.d/su)</li>
+<li>任意密码登陆的核心是auth sufficient pam_rootok.so,只要PAM配置文件中包含此配置即可 SSH任意密码登陆</li>
+</ol>
+<center>举个栗子</center>
+<center>靶机执行并查看是否软连接建立完成</center>
+<pre><code class="language-bash">ln -sf /usr/sbin/sshd /usr/local/su;/usr/local/su -oport=12345
+</code></pre>
+<p>说明:建立软连接到/usr/local/su 文件,也可以在其他目录,su文件名字不能变,变了就无法登录.当然可以通过其他设置,更改su名字也是可以的.然后启动,并指定监听12345端口,登录的时候密码随意即可.</p>
+<center>攻击者利用ssh并使用任意密码登陆靶机</center>
+<pre><code class="language-bash">ssh root@1xx.1xx.1xx.1xx -p 12345
+</code></pre>
+<p>参考:https://www.jozxing.cc/archives/1653</p>
+<h3 id="二-ssh利用公钥免密登录">二、ssh利用公钥免密登录</h3>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://ukonwho.github.io/post/bash-xiao-ji-qiao/" class="post-title gt-a-link">
+                    Bash 小技巧（一）
+                </a>
+            </div>
         
 
         

